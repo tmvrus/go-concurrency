@@ -5,23 +5,20 @@ type storage interface{}
 type StorageDB struct{}
 
 func (db *StorageDB) Stop() {}
-func NewDB(dsn string) StorageDB {
-	return StorageDB{}
-}
+
+func NewDB(dsn string) StorageDB { return StorageDB{} }
 
 type API struct{ db storage }
 
 func (a API) Stop() {}
-func NewAPI(db storage) API {
-	return API{db}
-}
+
+func NewAPI(db storage) API { return API{db} }
 
 type Consumer struct{ db storage }
 
 func (c Consumer) Stop() {}
-func NewConsumer(db storage) Consumer {
-	return Consumer{db}
-}
+
+func NewConsumer(db storage) Consumer { return Consumer{db} }
 
 func Start() {
 	db := NewDB("")
